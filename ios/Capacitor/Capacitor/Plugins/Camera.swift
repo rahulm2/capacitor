@@ -231,6 +231,9 @@ public class CAPCameraPlugin : CAPPlugin, UIImagePickerControllerDelegate, UINav
     }
 
     if settings.shouldResize {
+      if image == nil { 
+        return
+      }
       guard let convertedImage = resizeImage(image!, settings.preserveAspectRatio) else {
         self.call?.error("Error resizing image")
         return
@@ -239,6 +242,9 @@ public class CAPCameraPlugin : CAPPlugin, UIImagePickerControllerDelegate, UINav
     }
 
     if settings.shouldCorrectOrientation {
+      if image == nil { 
+        return
+      }
       guard let convertedImage = correctOrientation(image!) else {
         self.call?.error("Error resizing image")
         return
